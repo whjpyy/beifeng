@@ -1,6 +1,5 @@
 package com.beifeng.core;
 
-import org.apache.spark.Accumulable;
 import org.apache.spark.Accumulator;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
