@@ -4,6 +4,7 @@ import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
+import org.apache.spark.api.java.function.Function;
 import org.apache.spark.api.java.function.Function2;
 import org.apache.spark.api.java.function.VoidFunction;
 import scala.Tuple2;
@@ -36,8 +37,14 @@ public class ActionOperation {
         List<Integer> numberList = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         JavaRDD<Integer> numbers = sc.parallelize(numberList);
 
-        Integer sum = numbers.reduce((v1, v2) -> {
-            return v1 + v2;
+//        Integer sum = numbers.reduce((v1, v2) -> {
+//            return v1 + v2;
+//        });
+        Integer sum = numbers.reduce(new Function2<Integer, Integer, Integer>() {
+            @Override
+            public Integer call(Integer v1, Integer v2) throws Exception {
+                return v1 + v2;
+            }
         });
 
         System.out.println(sum);
@@ -47,11 +54,17 @@ public class ActionOperation {
         List<Integer> numberList = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         JavaRDD<Integer> numbers = sc.parallelize(numberList);
 
-        JavaRDD<Integer> doubleNumber = numbers.map(n -> {
-            return n * 2;
+//        JavaRDD<Integer> doubleNumber = numbers.map(n -> {
+//            return n * 2;
+//        });
+        JavaRDD<Integer> doubleNumbers = numbers.map(new Function<Integer, Integer>() {
+            @Override
+            public Integer call(Integer v1) throws Exception {
+                return v1 * 2;
+            }
         });
 
-        List<Integer> collectList = doubleNumber.collect();
+        List<Integer> collectList = doubleNumbers.collect();
         for(Integer num: collectList){
             System.out.println(num);
         }
@@ -79,8 +92,14 @@ public class ActionOperation {
         List<Integer> numberList = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         JavaRDD<Integer> numbers = sc.parallelize(numberList);
 
-        JavaRDD<Integer> doubleNumber = numbers.map(n -> {
-            return n * 2;
+//        JavaRDD<Integer> doubleNumber = numbers.map(n -> {
+//            return n * 2;
+//        });
+        JavaRDD<Integer> doubleNumber = numbers.map(new Function<Integer, Integer>() {
+            @Override
+            public Integer call(Integer v1) throws Exception {
+                return v1 * 2;
+            }
         });
 
         doubleNumber.saveAsTextFile("D:\\double_number.txt");

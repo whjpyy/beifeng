@@ -22,7 +22,7 @@ public class AccumulatorVariable {
 
         JavaSparkContext sc = new JavaSparkContext(conf);
 
-        Accumulator<Integer> sum = sc.accumulator(0);
+        final Accumulator<Integer> sum = sc.accumulator(0);
         List<Integer> numberList = Arrays.asList(1, 2, 3, 4, 5);
         JavaRDD<Integer> numbers = sc.parallelize(numberList);
         numbers.foreach(new VoidFunction<Integer>() {

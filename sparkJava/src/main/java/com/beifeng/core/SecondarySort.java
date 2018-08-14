@@ -30,7 +30,7 @@ public class SecondarySort {
             public Tuple2<SecondarySortKey, String> call(String s) throws Exception {
                 String[] lineSplited = s.split(" ");
                 SecondarySortKey key = new SecondarySortKey(Integer.valueOf(lineSplited[0]), Integer.valueOf(lineSplited[1]));
-                return new Tuple2<>(key, s);
+                return new Tuple2<SecondarySortKey, String>(key, s);
             }
         });
 

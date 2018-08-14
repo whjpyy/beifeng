@@ -31,7 +31,7 @@ public class GroupTop3 {
             @Override
             public Tuple2<String, Integer> call(String s) throws Exception {
                 String[] split = s.split(" ");
-                return new Tuple2<>(split[0], Integer.valueOf(split[1]));
+                return new Tuple2<String, Integer>(split[0], Integer.valueOf(split[1]));
             }
         });
 

@@ -27,7 +27,7 @@ public class Top3 {
         JavaPairRDD<Integer, String> pairs = lines.mapToPair(new PairFunction<String, Integer, String>() {
             @Override
             public Tuple2<Integer, String> call(String s) throws Exception {
-                return new Tuple2<>(Integer.valueOf(s), s);
+                return new Tuple2<Integer, String>(Integer.valueOf(s), s);
             }
         });
 
