@@ -6,8 +6,6 @@ import org.apache.spark.sql.DataFrame;
 import org.apache.spark.sql.SQLContext;
 import org.apache.spark.sql.SaveMode;
 
-import static org.apache.spark.sql.SaveMode.ErrorIfExists;
-
 /**
  * Created by youzeng
  * time: 2018-09-10 22:59
