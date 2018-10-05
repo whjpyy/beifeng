@@ -31,7 +31,7 @@ public class JSONDataSource {
         SQLContext sqlContext = new SQLContext(sc);
 
         // 针对json文件，创建DataFrame
-        DataFrame dfStudentScores = sqlContext.read().json("hdfs://spark1:9000/spark-sql/source/students.json");
+        DataFrame dfStudentScores = sqlContext.read().json("hdfs://spark1:9000/spark-sql/source/student_scores.json");
         dfStudentScores.registerTempTable("student_scores");
         DataFrame dfGoodStudentScores = sqlContext.sql("select name,score from student_scores where score >= 80");
 

@@ -19,7 +19,7 @@ public class DataFrameOperation {
         JavaSparkContext sc = new JavaSparkContext(conf);
         SQLContext sqlContext = new SQLContext(sc);
 
-        DataFrame df = sqlContext.read().json("hdfs://spark1:9000/students.json");
+        DataFrame df = sqlContext.read().json("hdfs://spark1:9000/spark-sql/source/students.json");
 
         // 打印DataFrame中所有的数据
         df.show();
