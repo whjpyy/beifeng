@@ -1,3 +1,4 @@
 .idea
 *.iml
 *.log
+metastore_db/
